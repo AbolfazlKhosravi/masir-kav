@@ -1,5 +1,7 @@
 import type { Config } from "tailwindcss";
 
+import { fontFamily } from "tailwindcss/defaultTheme";
+
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
@@ -42,6 +44,9 @@ export default {
       container: {
         center: true,
         padding: "1rem",
+      },
+      fontFamily: {
+        sans: ["var(--font-vazir)", ...fontFamily.sans],
       },
     },
   },
