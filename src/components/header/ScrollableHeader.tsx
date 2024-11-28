@@ -4,7 +4,7 @@ import useScrollDirection from "@/hooks/useScrollDirection";
 import BottomNavigation from "./BottomNavigation";
 import DesktopHeader from "./DesktopHeader";
 
-function Header() {
+function ScrollableHeader() {
   const scrollingDown = useScrollDirection();
 
   return (
@@ -29,4 +29,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default ScrollableHeader;
