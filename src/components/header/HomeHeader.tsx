@@ -4,7 +4,7 @@ import DesktopHeader from "./DesktopHeader";
 function HomeHeader() {
   return (
     <>
-      <header className={`fixed top-0 bg-red-500 w-full hidden lg:block`}>
+      <header className={`fixed top-0  w-full hidden lg:block`}>
         <DesktopHeader />
       </header>
       <nav
