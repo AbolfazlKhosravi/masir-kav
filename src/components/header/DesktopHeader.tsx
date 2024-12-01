@@ -11,6 +11,7 @@ import {
   User,
 } from "@/ui/Icons";
 import NavLink from "../NavLink";
+import DarkModeToggle from "@/ui/DarkModeToggle";
 
 const navLinks = [
   {
@@ -46,14 +47,19 @@ const navLinks = [
 ];
 
 function DesktopHeader() {
+  const classSingleLi =
+    "w-10 h-10 flex items-center justify-center glass-effect--high-blur rounded-full";
 
   return (
-    <div className="h-auto  px-4 pt-4  flex  items-center justify-between">
+    <div className="h-auto  px-4 pt-2 flex  items-center justify-between">
       <div className="w-11 h-11  flex items-center justify-center bg-white rounded-3xl">
         <Image src={icon} alt="icon site" />
       </div>
       <nav>
         <ul className="flex items-center justify-end gap-x-3">
+          <li className={`${classSingleLi}`}>
+            <DarkModeToggle/>
+          </li>
           <div className="flex items-center justify-between glass-effect--low-blur  h-10 w-auto rounded-3xl  px-2  gap-x-9">
             <div className="flex items-center justify-between  gap-x-2">
               {navLinks.map((navLink) => {
@@ -79,12 +85,12 @@ function DesktopHeader() {
               </NavLink>
             </li>
           </div>
-          <li className="w-10 h-10 flex items-center justify-center glass-effect--high-blur rounded-full">
+          <li className={`${classSingleLi}`}>
             <NavLink path="/card">
               <Bag width={30} height={30} />
             </NavLink>
           </li>
-          <li className="w-10 h-10  flex items-center justify-center glass-effect--high-blur rounded-full">
+          <li className={`${classSingleLi}`}>
             <NavLink path="/profile">
               <User width={30} height={30} />
             </NavLink>
