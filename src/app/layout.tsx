@@ -19,7 +19,7 @@ export default function RootLayout({
         className={`${vazirFont.variable} font-sans min-h-screen flex flex-col items-center`}
       >
         <HomeHeader />
-        <main className="container xl:max-w-screen-xl flex-1">{children}</main>
+        <main className="h-screen w-full flex-1">{children}</main>
         <footer>فوتر سایت</footer>
       </body>
     </html>

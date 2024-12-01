@@ -1,3 +1,6 @@
+import Image from "next/image";
+import bg from "../../public/bg.jpg"
+
 export default function Home() {
-  return <div className="font-bold text-4xl text-primary-500"></div>;
+  return <Image src={bg} alt="bg" className="h-screen  object-cover" />;
 }
