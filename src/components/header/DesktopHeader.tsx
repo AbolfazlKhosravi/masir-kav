@@ -31,12 +31,12 @@ function DesktopHeader() {
       <div className=" flex items-center gap-x-3 ">
         <div className={`${classSingleLi}`}>
           <NavLink path="/card">
-            <Bag width={30} height={30} />
+            <Bag width={25} height={25} />
           </NavLink>
         </div>
         <div className={`${classSingleLi}`}>
           <NavLink path="/profile">
-            <User width={30} height={30} />
+            <User width={25} height={25} />
           </NavLink>
         </div>
         <div className={`${classSingleLi}`}>

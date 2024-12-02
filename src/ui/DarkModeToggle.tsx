@@ -9,9 +9,9 @@ function DarkModeToggle() {
   return (
     <button onClick={() => setValue(!isDarkMode)}>
       {isDarkMode ? (
-        <Sun width={35} height={35} />
+        <Sun width={30} height={30} />
       ) : (
-        <Moon width={35} height={35} />
+        <Moon width={30} height={30} />
       )}
     </button>
   );
