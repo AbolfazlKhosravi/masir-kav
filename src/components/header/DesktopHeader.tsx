@@ -30,9 +30,6 @@ function DesktopHeader() {
       </ul>
       <div className=" flex items-center gap-x-3 ">
         <div className={`${classSingleLi}`}>
-          <DarkModeToggle />
-        </div>
-        <div className={`${classSingleLi}`}>
           <NavLink path="/card">
             <Bag width={30} height={30} />
           </NavLink>
@@ -41,6 +38,9 @@ function DesktopHeader() {
           <NavLink path="/profile">
             <User width={30} height={30} />
           </NavLink>
+        </div>
+        <div className={`${classSingleLi}`}>
+          <DarkModeToggle />
         </div>
       </div>
     </nav>
