@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/menuAnimation.css";
 interface Inputs {
   width: number;
   height: number;
@@ -160,19 +161,27 @@ export const Heart = ({ width, height }: Inputs) => (
   </div>
 );
 
-export const Meno = ({ width, height }: Inputs) => (
+interface Menu extends Inputs {
+  isOpenMenu: boolean;
+}
+
+export const Menu = ({ width, height, isOpenMenu }: Menu) => (
   <svg
-    xmlns="http://www.w3.org/2000/svg"
+    className={`ham hamRotate ham4 ${isOpenMenu ? "active" : ""}`}
+    viewBox="0 0 100 100"
     width={width}
     height={height}
-    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
     fill="none"
   >
     <path
-      d="M7.28307 19L20 19M19.9996 12L4 12M20 5L12.9719 5"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
+      className="line top"
+      d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20"
+    />
+    <path className="line middle" d="m 70,50 h -40" />
+    <path
+      className="line bottom"
+      d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20"
     />
   </svg>
 );
