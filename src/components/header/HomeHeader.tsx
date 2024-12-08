@@ -7,7 +7,7 @@ import DarkModeToggle from "@/ui/DarkModeToggle";
 function HomeHeader() {
   return (
     <>
-      <header className={`fixed top-0  w-full `}>
+      <header className={`z-50 fixed top-0  w-full `}>
         <DesktopHeader />
         <div className="lg:hidden h-auto  px-2 pt-2 flex  items-center justify-between text-secondary-100">
           <div className="w-14 h-14 bg-white  flex items-center justify-center  rounded-3xl">
@@ -19,7 +19,7 @@ function HomeHeader() {
         </div>
       </header>
       <nav
-        className={`flex items-center fixed bottom-3  w-[calc(100vw-30px)] max-w-[25rem] lg:hidden`}
+        className={`z-50 flex items-center fixed bottom-3  w-[calc(100vw-30px)] max-w-[25rem] lg:hidden`}
       >
         <BottomNavigation />
       </nav>

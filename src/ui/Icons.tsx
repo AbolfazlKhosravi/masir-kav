@@ -100,6 +100,79 @@ export const Arrows = ({ width, height }: Inputs) => (
     ></path>
   </svg>
 );
+export const Line = ({ width, height }: Inputs) => (
+  <svg height={width} width={height} xmlns="http://www.w3.org/2000/svg">
+    <line
+      x1="10"
+      y1="0"
+      x2="10"
+      y2="200"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
+  </svg>
+);
+
+export const ArrowLeft = ({ width, height }: Inputs) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox="0 0 35 36"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M5.26766 13.3902C6.19116 9.23637 9.2652 5.99306 13.2022 5.01871C16.0454 4.31505 19.0045 4.31505 21.8477 5.01871C25.7847 5.99306 28.8588 9.23638 29.7823 13.3902C30.4492 16.39 30.4492 19.5119 29.7823 22.5118C28.8588 26.6656 25.7847 29.9089 21.8477 30.8832C19.0045 31.5869 16.0455 31.5869 13.2022 30.8832C9.2652 29.9089 6.19116 26.6656 5.26766 22.5118C4.60072 19.512 4.60072 16.39 5.26766 13.3902Z"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
+    <path
+      d="M18.9426 21.6899L15.3988 17.951L18.9426 14.2122"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+export const ArrowRight = ({ width, height }: Inputs) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox="0 0 35 36"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M5.16256 13.3902C6.08605 9.23637 9.16009 5.99306 13.0971 5.01871C15.9403 4.31505 18.8994 4.31505 21.7426 5.01871C25.6796 5.99306 28.7537 9.23638 29.6772 13.3902C30.3441 16.39 30.3441 19.5119 29.6772 22.5118C28.7537 26.6656 25.6796 29.9089 21.7426 30.8832C18.8994 31.5869 15.9403 31.5869 13.0971 30.8832C9.1601 29.9089 6.08605 26.6656 5.16256 22.5118C4.49562 19.512 4.49562 16.39 5.16256 13.3902Z"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
+    <path
+      d="M16.0024 14.2122L19.5461 17.9511L16.0024 21.6899"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+export const Square = ({ width, height }: Inputs) => (
+  <svg width={width} height={height} xmlns="http://www.w3.org/2000/svg">
+    <rect
+      width={width}
+      height={height}
+      x="0"
+      y="0"
+      rx="8"
+      ry="8"
+      fill="currentColor"
+    />
+  </svg>
+);
+
 export const Video = ({ width, height }: Inputs) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -411,23 +484,7 @@ export const Instagram = ({ width, height }: Inputs) => (
     <circle cx="16" cy="7" r="1" fill="currentColor" />
   </svg>
 );
-export const ArrowLeft = ({ width, height }: Inputs) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={width}
-    height={height}
-    viewBox="0 0 24 24"
-    fill="none"
-  >
-    <path
-      d="M14.5 17L9.5 12L14.5 7"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
+
 export const Close = ({ width, height }: Inputs) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
