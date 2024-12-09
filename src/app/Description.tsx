@@ -184,12 +184,14 @@ export default function Description() {
   const progressBar = useRef<HTMLDivElement | null>(null);
   const animationImg = useRef<HTMLDivElement | null>(null);
 
-  const handleSlideChange = () => {
+  const handlePrgressBar = () => {
     if (progressBar.current) {
       progressBar.current.classList.remove("progress-bar");
       void progressBar.current.offsetWidth;
       progressBar.current.classList.add("progress-bar");
     }
+  };
+  const handleAnimationImg = () => {
     if (animationImg.current) {
       animationImg.current.classList.remove("animation-img");
       void animationImg.current.offsetWidth;
@@ -199,7 +201,8 @@ export default function Description() {
 
   useEffect(() => {
     // setCurrentIndex(0);
-    handleSlideChange();
+    handlePrgressBar();
+    handleAnimationImg();
   }, []);
 
   return (
@@ -216,7 +219,12 @@ export default function Description() {
         onSwiper={(swiper) => setSwiperInstance(swiper)}
         onSlideChange={(swiper) => {
           setCurrentIndex(swiper.realIndex);
-          handleSlideChange();
+        }}
+        onSlideChangeTransitionEnd={() => {
+          handlePrgressBar();
+        }}
+        onSlideNextTransitionStart={() => {
+          handleAnimationImg();
         }}
         breakpoints={{
           300: {
@@ -234,7 +242,7 @@ export default function Description() {
           delay: 6000,
           disableOnInteraction: false,
         }}
-        speed={1500}
+        speed={600}
         modules={[Autoplay]}
         spaceBetween={20}
         onClick={(swiper) => swiper.slideNext()}
@@ -295,13 +303,17 @@ export default function Description() {
           <div className="absolute  bottom-[12%] right-[50%] flex items-center justify-center gap-x-3 text-secondary-50">
             <button
               className="  hover:animate-pulse overflow-hidden"
-              onClick={() => swiperInstance?.slideNext()}
+              onClick={() => {
+                swiperInstance?.slideNext(600);
+              }}
             >
               <ArrowRight width={50} height={50} />
             </button>
             <button
               className="  hover:animate-pulse overflow-hidden"
-              onClick={() => swiperInstance?.slidePrev()}
+              onClick={() => {
+                swiperInstance?.slidePrev(300);
+              }}
             >
               <ArrowLeft width={50} height={50} />
             </button>

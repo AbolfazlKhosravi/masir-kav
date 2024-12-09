@@ -5,7 +5,7 @@
   transition-timing-function: ease-in-out;
 }
 .progress-bar {
-  animation: progress-fill 7.5s ease-in-out forwards;
+  animation: progress-fill 6s ease-in-out forwards;
 }
 
 @keyframes progress-fill {
@@ -24,7 +24,7 @@
 }
 
 .animation-img {
-  animation: animation-img-fill .8s ease-in-out forwards;
+  animation: animation-img-fill .6s ease-in-out forwards;
 }
 
 @keyframes animation-img-fill {
