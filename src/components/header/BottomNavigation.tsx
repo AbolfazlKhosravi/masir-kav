@@ -12,7 +12,7 @@ function BottomNavigation() {
 
   return (
     <ul
-      className={` w-full h-auto flex flex-col items-start  rounded-[1.75rem] glass-effect--high-blur`}
+      className={` w-full h-auto flex flex-col items-start  rounded-[1.75rem] glass-effect--high-blur-noColor text-secondary-50`}
     >
       <div className={`flex flex-col items-start  w-full overflow-hidden transition-all ease-in-out duration-500 ${isOpenMenu?"max-h-80 pt-1":"max-h-0"}`}>
         {navLinks.map((navLink) => {

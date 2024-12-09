@@ -21,8 +21,8 @@ export default function RootLayout({
         <DarkModeProvider>
           <HomeHeader />
         </DarkModeProvider>
-        <main className="h-screen w-full flex-1">{children}</main>
-        <footer>فوتر سایت</footer>
+        <main className="h-screen w-full  flex-1">{children}</main>
+        {/* <footer>فوتر سایت</footer> */}
       </body>
     </html>
   );

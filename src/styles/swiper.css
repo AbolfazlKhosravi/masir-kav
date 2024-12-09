@@ -1,9 +1,11 @@
 .swiper-custom {
   position: absolute;
 }
-
+.swiper-wrapper{
+  transition-timing-function: ease-in-out;
+}
 .progress-bar {
-  animation: progress-fill 5s ease-in-out forwards;
+  animation: progress-fill 7.5s ease-in-out forwards;
 }
 
 @keyframes progress-fill {
@@ -18,5 +20,19 @@
   100% {
     width: 100%;
     transform: translateX(100%);
+  }
+}
+
+.animation-img {
+  animation: animation-img-fill .8s ease-in-out forwards;
+}
+
+@keyframes animation-img-fill {
+  to{
+    width: 100vw; 
+    height: 100vh;
+    bottom: 0;
+    border-radius: 0;
+    right:0;
   }
 }
