@@ -3,6 +3,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper";
 import { Autoplay } from "swiper/modules";
+import homeImg from "../../public/homeImg.jpg";
 
 // Import Swiper styles
 import "swiper/css";
@@ -26,6 +27,7 @@ export default function Description() {
   const animationImg = useRef<HTMLDivElement | null>(null);
   const animationImgTurnBack = useRef<HTMLDivElement | null>(null);
   const [isTurnBack, setIsTurnBack] = useState<boolean>(false);
+  const [firstLoad, setFirstLoad] = useState<boolean>(true);
 
   const handlePrgressBar = () => {
     if (progressBar.current) {
@@ -57,12 +59,17 @@ export default function Description() {
   };
 
   useEffect(() => {
+    setFirstLoad(false);
     handlePrgressBar();
     handleAnimationImgFirstLoad();
   }, []);
 
   return (
-    <div className="w-screen h-screen  relative">
+    <div
+      className={`w-screen h-screen  relative transition-all duration-1000 ${
+        firstLoad ? "blur-sm" : "blur-0"
+      }`}
+    >
       <ProgressBar progressBar={progressBar} />
       <SwiperCustom
         setSwiperInstance={setSwiperInstance}
@@ -75,7 +82,16 @@ export default function Description() {
         handleAnimationImgTurnBack={handleAnimationImgTurnBack}
       />
       <ActiveSlide animationImg={animationImg} currentIndex={currentIndex} />
-      <PreSlide currentIndex={currentIndex} />
+      {firstLoad ? (
+        <Image
+          src={homeImg}
+          alt="rednder Image"
+          className="w-full h-full object-cover absolute z-40"
+        />
+      ) : (
+        <PreSlide currentIndex={currentIndex} />
+      )}
+
       <TurnBackSlide
         isTurnBack={isTurnBack}
         currentIndex={currentIndex}
