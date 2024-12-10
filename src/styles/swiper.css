@@ -1,5 +1,6 @@
 .swiper-custom {
   position: absolute;
+  z-index: 20;
 }
 .swiper-wrapper{
   transition-timing-function: ease-in-out;

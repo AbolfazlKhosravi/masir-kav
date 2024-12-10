@@ -47,7 +47,7 @@ const swiperSlides = [
     ),
     label: "بلاگ",
     icon: <Document width={25} height={25} />,
-    them:"dark"
+    them: "dark",
   },
   {
     step: 2,
@@ -62,7 +62,7 @@ const swiperSlides = [
     ),
     label: "اقامت گاه",
     icon: <Location width={25} height={25} />,
-    them:"light"
+    them: "light",
   },
   {
     step: 3,
@@ -77,7 +77,7 @@ const swiperSlides = [
     ),
     label: "تور",
     icon: <Info width={25} height={25} />,
-    them:"light"
+    them: "light",
   },
   {
     step: 4,
@@ -92,7 +92,7 @@ const swiperSlides = [
     ),
     label: "فروشگاه",
     icon: <Cart width={25} height={25} />,
-    them:"dark"
+    them: "dark",
   },
   {
     step: 0,
@@ -107,7 +107,7 @@ const swiperSlides = [
     ),
     label: "خانه",
     icon: <Home width={25} height={25} />,
-    them:"dark"
+    them: "dark",
   },
 ];
 
@@ -127,7 +127,7 @@ const steps = [
     icon: <Home width={25} height={25} />,
     linkSrc: "/login",
     linkLabel: "به ما بپیوندید .🥳",
-    them:"dark",
+    them: "dark",
   },
   {
     step: 1,
@@ -144,7 +144,7 @@ const steps = [
     icon: <Document width={25} height={25} />,
     linkSrc: "/blog",
     linkLabel: "کسب تجربه 🤓",
-    them:"dark"
+    them: "dark",
   },
   {
     step: 2,
@@ -161,7 +161,7 @@ const steps = [
     icon: <Location width={25} height={25} />,
     linkSrc: "/residence",
     linkLabel: "اینجا منتظرته ! 😎",
-    them:"light"
+    them: "light",
   },
   {
     step: 3,
@@ -178,7 +178,7 @@ const steps = [
     icon: <Info width={25} height={25} />,
     linkSrc: "/tour",
     linkLabel: "ماجراجویی 🥳",
-    them:"light"
+    them: "light",
   },
   {
     step: 4,
@@ -195,7 +195,7 @@ const steps = [
     icon: <Cart width={25} height={25} />,
     linkSrc: "/stor",
     linkLabel: "دست خالی نری 😁",
-    them:"dark"
+    them: "dark",
   },
 ];
 
@@ -224,7 +224,6 @@ export default function Description() {
     handlePrgressBar();
     handleAnimationImg();
   }, []);
-
 
   return (
     <div className="w-screen h-screen  relative">
@@ -266,7 +265,7 @@ export default function Description() {
         modules={[Autoplay]}
         spaceBetween={20}
         onClick={(swiper) => swiper.slideNext()}
-        className={`w-40 sm:w-96 lg:w-[35rem] h-52 rounded-xl bottom-[11.5%] right-0 swiper-custom cursor-pointer `}
+        className={` w-40 sm:w-96 lg:w-[35rem] h-52 rounded-xl bottom-[11.5%] right-0 swiper-custom cursor-pointer `}
       >
         {swiperSlides.map((step) => {
           return (
@@ -278,7 +277,11 @@ export default function Description() {
               }`}
             >
               {step.img}{" "}
-              <div className={`absolute bottom-0 z-30 w-full p-3 flex flex-col items-start gap-y-2 ${step.them==="dark"?"text-white":"text-white"}`}>
+              <div
+                className={`absolute bottom-0 z-30 w-full p-3 flex flex-col items-start gap-y-2 ${
+                  step.them === "dark" ? "text-white" : "text-white"
+                }`}
+              >
                 {step.icon}{" "}
                 <p className="text-[.7rem]">
                   {step.description.slice(0, 24)} ...
@@ -291,7 +294,7 @@ export default function Description() {
       </Swiper>
       <div
         ref={animationImg}
-        className="w-[8.93rem]  right-[1.05rem] sm:w-[15.6rem]  sm:right-[8.4rem] lg:w-[13.25rem] lg:right-[21.75rem] rounded-xl overflow-hidden h-52 absolute bottom-[11.5%]"
+        className="z-10 w-[8.93rem]  right-[1.05rem] sm:w-[15.6rem]  sm:right-[8.4rem] lg:w-[13.25rem] lg:right-[21.75rem] rounded-xl overflow-hidden h-52 absolute bottom-[11.5%]"
       >
         {steps
           .filter((step) => step.step === currentIndex)
@@ -300,10 +303,18 @@ export default function Description() {
               <div key={step.step} className="w-full h-full">
                 {step.img}
                 <div className="absolute top-[15%] right-[21%] gap-y-4 flex flex-col items-start">
-                  <h2 className={`animation-text opacity-0 translate-y-[12rem] font-black text-[3.5rem]   ${step.them==="dark"?"text-blue-900":"text-blue-950"}`}>
+                  <h2
+                    className={`animation-text opacity-0 translate-y-[12rem] font-black text-[3.5rem]   ${
+                      step.them === "dark" ? "text-blue-900" : "text-blue-950"
+                    }`}
+                  >
                     {step.label}
                   </h2>
-                  <p className={`animation-text opacity-0 translate-y-[12rem] ml-12  rounded-2xl text-lg font-normal drop-shadow-sm  max-w-72 ${step.them==="dark"?"text-slate-200":"text-slate-700"}`}>
+                  <p
+                    className={`animation-text opacity-0 translate-y-[12rem] ml-12  rounded-2xl text-lg font-normal drop-shadow-sm  max-w-72 ${
+                      step.them === "dark" ? "text-slate-200" : "text-slate-700"
+                    }`}
+                  >
                     {step.description}
                   </p>
                   <Link
@@ -317,34 +328,71 @@ export default function Description() {
             );
           })}
       </div>
+      <div className="z-0 w-screen  h-screen  absolute  top-0">
+        {steps
+          .filter((step) =>
+            currentIndex === 0
+              ? step.step === 4
+              : step.step === currentIndex - 1
+          )
+          .map((step) => {
+            return (
+              <div key={step.step} className="w-full h-full">
+                {step.img}
+                <div className="absolute top-[15%] right-[21%] gap-y-4 flex flex-col items-start">
+                  <h2
+                    className={` font-black text-[3.5rem]   ${
+                      step.them === "dark" ? "text-blue-900" : "text-blue-950"
+                    }`}
+                  >
+                    {step.label}
+                  </h2>
+                  <p
+                    className={` ml-12  rounded-2xl text-lg font-normal drop-shadow-sm  max-w-72 ${
+                      step.them === "dark" ? "text-slate-200" : "text-slate-700"
+                    }`}
+                  >
+                    {step.description}
+                  </p>
+                  <Link
+                    href={step.linkSrc}
+                    className="  font-bold text-lg glass-effect--high-blur rounded-2xl flex items-center justify-center w-auto p-4 h-12 text-center"
+                  >
+                    {step.linkLabel}
+                  </Link>
+                </div>
+              </div>
+            );
+          })}
+      </div>
       {swiperInstance && (
         <>
-          <div className="absolute  right-[1%] lg:right-1 top-8 lg:top-20 lg:flex-row flex flex-col items-start text-secondary-50 ">
-           <div>
-           {steps.map(({ step, icon }) => (
-              <div
-                key={step}
-                className={`${
-                  currentIndex === step ? "text-primary-500" : ""
-                }  cursor-pointer flex  items-end justify-start gap-x-1 `}
-              >
-                <div className="flex flex-col items-center justify-center ">
-                  {step !== 0 && (
-                    <span className="text-slate-800">
-                      <Line width={50} height={20} />
-                    </span>
-                  )}
-                  <Square width={18} height={18} />
+          <div className="z-30 absolute  right-[1%] lg:right-1 top-8 lg:top-20 lg:flex-row flex flex-col items-start text-secondary-50 ">
+            <div>
+              {steps.map(({ step, icon }) => (
+                <div
+                  key={step}
+                  className={`${
+                    currentIndex === step ? "text-primary-500" : ""
+                  }  cursor-pointer flex  items-end justify-start gap-x-1 `}
+                >
+                  <div className="flex flex-col items-center justify-center ">
+                    {step !== 0 && (
+                      <span className="text-slate-800">
+                        <Line width={50} height={20} />
+                      </span>
+                    )}
+                    <Square width={18} height={18} />
+                  </div>
+                  <span className="translate-y-1">{icon}</span>
                 </div>
-                <span className="translate-y-1">{icon}</span>
-              </div>
-            ))}
-           </div>
+              ))}
+            </div>
             <span className="font-bold text-primary-500 text-4xl mt-4  mr-1 lg:mt-1 lg:mr-2 ">
               {toPersianNumbers(`0${currentIndex + 1}`)}
             </span>
           </div>
-          <div className="absolute  bottom-[12%] right-[50%] mr-4 flex items-center justify-center gap-x-3 text-secondary-50">
+          <div className="z-30 absolute  bottom-[12%] right-[50%] mr-4 flex items-center justify-center gap-x-3 text-secondary-50">
             <button
               className="  hover:animate-pulse overflow-hidden"
               onClick={() => {
