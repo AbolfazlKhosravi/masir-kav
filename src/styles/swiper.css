@@ -5,7 +5,7 @@
   transition-timing-function: ease-in-out;
 }
 .progress-bar {
-  animation: progress-fill 6s ease-in-out forwards;
+  animation: progress-fill 9s ease-in-out forwards;
 }
 
 @keyframes progress-fill {
@@ -24,7 +24,20 @@
 }
 
 .animation-img {
-  animation: animation-img-fill .6s ease-in-out forwards;
+  animation: animation-img-fill .8s ease-in-out forwards;
+}
+
+.animation-text {
+  animation: animation-text-fill 1s ease-in-out forwards;
+}
+.animation-text:nth-child(1){
+  animation-delay: 0s;
+}
+.animation-text:nth-child(2){
+  animation-delay: .5s;
+}
+.animation-text:nth-child(3){
+  animation-delay: 1s;
 }
 
 @keyframes animation-img-fill {
@@ -34,5 +47,12 @@
     bottom: 0;
     border-radius: 0;
     right:0;
+  }
+}
+
+@keyframes animation-text-fill {
+  to{
+    opacity: 1;
+    transform: translateY(0);
   }
 }

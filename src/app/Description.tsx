@@ -31,12 +31,13 @@ import {
 } from "@/ui/Icons";
 import { toPersianNumbers } from "@/utils/toPersianNumbers";
 import Image from "next/image";
+import Link from "next/link";
 
 const swiperSlides = [
   {
     step: 1,
     description:
-      "شما در این قسمت  میتونید تجربیات خود را به اشتراک بزاریم ! و از تجربیات دیگران استفاده کنید .",
+      "شما در این اینجا  میتونید تجربیات خود را به اشتراک بزاریم ! و از تجربیات دیگران استفاده کنید.",
     img: (
       <Image
         src={blogImg}
@@ -46,6 +47,7 @@ const swiperSlides = [
     ),
     label: "بلاگ",
     icon: <Document width={25} height={25} />,
+    them:"dark"
   },
   {
     step: 2,
@@ -60,6 +62,7 @@ const swiperSlides = [
     ),
     label: "اقامت گاه",
     icon: <Location width={25} height={25} />,
+    them:"light"
   },
   {
     step: 3,
@@ -74,6 +77,7 @@ const swiperSlides = [
     ),
     label: "تور",
     icon: <Info width={25} height={25} />,
+    them:"light"
   },
   {
     step: 4,
@@ -88,6 +92,7 @@ const swiperSlides = [
     ),
     label: "فروشگاه",
     icon: <Cart width={25} height={25} />,
+    them:"dark"
   },
   {
     step: 0,
@@ -102,6 +107,7 @@ const swiperSlides = [
     ),
     label: "خانه",
     icon: <Home width={25} height={25} />,
+    them:"dark"
   },
 ];
 
@@ -119,11 +125,14 @@ const steps = [
     ),
     label: "خانه",
     icon: <Home width={25} height={25} />,
+    linkSrc: "/login",
+    linkLabel: "به ما بپیوندید .🥳",
+    them:"dark",
   },
   {
     step: 1,
     description:
-      "شما در این قسمت  میتونید تجربیات خود را به اشتراک بزاریم ! و از تجربیات دیگران استفاده کنید .",
+      "شما در این اینجا  میتونید تجربیات خود را به اشتراک بزاریم ! و از تجربیات دیگران استفاده کنید .",
     img: (
       <Image
         src={blogImg}
@@ -133,6 +142,9 @@ const steps = [
     ),
     label: "بلاگ",
     icon: <Document width={25} height={25} />,
+    linkSrc: "/blog",
+    linkLabel: "کسب تجربه 🤓",
+    them:"dark"
   },
   {
     step: 2,
@@ -147,6 +159,9 @@ const steps = [
     ),
     label: "اقامت گاه",
     icon: <Location width={25} height={25} />,
+    linkSrc: "/residence",
+    linkLabel: "اینجا منتظرته ! 😎",
+    them:"light"
   },
   {
     step: 3,
@@ -161,6 +176,9 @@ const steps = [
     ),
     label: "تور",
     icon: <Info width={25} height={25} />,
+    linkSrc: "/tour",
+    linkLabel: "ماجراجویی 🥳",
+    them:"light"
   },
   {
     step: 4,
@@ -175,6 +193,9 @@ const steps = [
     ),
     label: "فروشگاه",
     icon: <Cart width={25} height={25} />,
+    linkSrc: "/stor",
+    linkLabel: "دست خالی نری 😁",
+    them:"dark"
   },
 ];
 
@@ -200,18 +221,17 @@ export default function Description() {
   };
 
   useEffect(() => {
-    // setCurrentIndex(0);
     handlePrgressBar();
     handleAnimationImg();
   }, []);
 
+
   return (
     <div className="w-screen h-screen  relative">
-      {/* {steps.find((step) => step.step === currentIndex)?.img} */}
       <div dir="ltr" className="absolute z-50 top-0 w-full h-1">
         <div
           ref={progressBar}
-          className="h-full rounded-r-lg bg-primary-500"
+          className="h-full rounded-r-lg bg-primary-400"
         ></div>
       </div>
       <Swiper
@@ -239,7 +259,7 @@ export default function Description() {
         }}
         loop={true}
         autoplay={{
-          delay: 6000,
+          delay: 9000,
           disableOnInteraction: false,
         }}
         speed={600}
@@ -258,12 +278,12 @@ export default function Description() {
               }`}
             >
               {step.img}{" "}
-              <div className="absolute bottom-0 z-30 text-white w-full p-3 flex flex-col items-start gap-y-2">
+              <div className={`absolute bottom-0 z-30 w-full p-3 flex flex-col items-start gap-y-2 ${step.them==="dark"?"text-white":"text-white"}`}>
                 {step.icon}{" "}
                 <p className="text-[.7rem]">
-                  {step.description.slice(0, 22)} ...
+                  {step.description.slice(0, 24)} ...
                 </p>{" "}
-                <p className="font-bold text-2xl ">{step.label}</p>
+                <p className="font-bold text-2xl">{step.label}</p>
               </div>
             </SwiperSlide>
           );
@@ -273,16 +293,39 @@ export default function Description() {
         ref={animationImg}
         className="w-[8.93rem]  right-[1.05rem] sm:w-[15.6rem]  sm:right-[8.4rem] lg:w-[13.25rem] lg:right-[21.75rem] rounded-xl overflow-hidden h-52 absolute bottom-[11.5%]"
       >
-        {steps.find((step) => step.step === currentIndex)?.img}
+        {steps
+          .filter((step) => step.step === currentIndex)
+          .map((step) => {
+            return (
+              <div key={step.step} className="w-full h-full">
+                {step.img}
+                <div className="absolute top-[15%] right-[21%] gap-y-4 flex flex-col items-start">
+                  <h2 className={`animation-text opacity-0 translate-y-[12rem] font-black text-[3.5rem]   ${step.them==="dark"?"text-blue-900":"text-blue-950"}`}>
+                    {step.label}
+                  </h2>
+                  <p className={`animation-text opacity-0 translate-y-[12rem] ml-12  rounded-2xl text-lg font-normal drop-shadow-sm  max-w-72 ${step.them==="dark"?"text-slate-200":"text-slate-700"}`}>
+                    {step.description}
+                  </p>
+                  <Link
+                    href={step.linkSrc}
+                    className="animation-text opacity-0 translate-y-[12rem]  font-bold text-lg glass-effect--high-blur rounded-2xl flex items-center justify-center w-auto p-4 h-12 text-center"
+                  >
+                    {step.linkLabel}
+                  </Link>
+                </div>
+              </div>
+            );
+          })}
       </div>
       {swiperInstance && (
         <>
-          <div className="absolute  right-[2%]  top-8 flex flex-col items-start text-secondary-50 ">
-            {steps.map(({ step, icon }) => (
+          <div className="absolute  right-[1%] lg:right-1 top-8 lg:top-20 lg:flex-row flex flex-col items-start text-secondary-50 ">
+           <div>
+           {steps.map(({ step, icon }) => (
               <div
                 key={step}
                 className={`${
-                  currentIndex === step ? "text-blue-500" : ""
+                  currentIndex === step ? "text-primary-500" : ""
                 }  cursor-pointer flex  items-end justify-start gap-x-1 `}
               >
                 <div className="flex flex-col items-center justify-center ">
@@ -296,11 +339,12 @@ export default function Description() {
                 <span className="translate-y-1">{icon}</span>
               </div>
             ))}
-            <span className="font-bold text-primary-500 text-4xl mt-4  mr-1">
+           </div>
+            <span className="font-bold text-primary-500 text-4xl mt-4  mr-1 lg:mt-1 lg:mr-2 ">
               {toPersianNumbers(`0${currentIndex + 1}`)}
             </span>
           </div>
-          <div className="absolute  bottom-[12%] right-[50%] flex items-center justify-center gap-x-3 text-secondary-50">
+          <div className="absolute  bottom-[12%] right-[50%] mr-4 flex items-center justify-center gap-x-3 text-secondary-50">
             <button
               className="  hover:animate-pulse overflow-hidden"
               onClick={() => {

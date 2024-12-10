@@ -16,7 +16,7 @@
       --color-primary-300: 102, 170, 249;
       --color-primary-200: 153, 199, 251;
       --color-primary-100: 204, 227, 253;
-      --color-primary-50: 230, 241, 254;
+      --color-primary-50: 204, 227, 253;
 
       --color-secondary-900: 24, 24, 27;
       --color-secondary-800: 39, 39, 42;
@@ -187,8 +187,7 @@ body {
 .glass-effect--low-blur {
   backdrop-filter: blur(3px) saturate(190%);
   -webkit-backdrop-filter: blur(3px) saturate(190%);
-  background-color: rgba(255, 255, 255, 0.04);
-  color: rgb(212, 212, 216);
+  background-color: rgba(var(--background-app-rgb), 0.04);
 }
 
 button {
