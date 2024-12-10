@@ -204,6 +204,9 @@ export default function Description() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const progressBar = useRef<HTMLDivElement | null>(null);
   const animationImg = useRef<HTMLDivElement | null>(null);
+  const animationImgTurnBack = useRef<HTMLDivElement | null>(null);
+  const [isTurnBack, setIsTurnBack] = useState<boolean>(false);
+  console.log(currentIndex);
 
   const handlePrgressBar = () => {
     if (progressBar.current) {
@@ -217,6 +220,14 @@ export default function Description() {
       animationImg.current.classList.remove("animation-img");
       void animationImg.current.offsetWidth;
       animationImg.current.classList.add("animation-img");
+    }
+  };
+  const handleAnimationImgTurnBack = () => {
+    if (animationImgTurnBack.current) {
+      animationImgTurnBack.current.classList.remove("animation-img-turn-back");
+      void animationImgTurnBack.current.offsetWidth;
+      animationImgTurnBack.current.classList.add("animation-img-turn-back");
+      setIsTurnBack(true);
     }
   };
 
@@ -243,7 +254,12 @@ export default function Description() {
           handlePrgressBar();
         }}
         onSlideNextTransitionStart={() => {
+          setIsTurnBack(false);
           handleAnimationImg();
+        }}
+        onSlidePrevTransitionStart={() => {
+          setIsTurnBack(true);
+          handleAnimationImgTurnBack();
         }}
         breakpoints={{
           300: {
@@ -273,8 +289,19 @@ export default function Description() {
               dir="rtl"
               key={step.step}
               className={`overflow-hidden rounded-xl   ${
-                step.step === currentIndex ? "opacity-0" : "opacity-100"
-              }`}
+                step.step === currentIndex ? "opacity-0" : ""
+              }
+                ${
+                  isTurnBack && step.step === currentIndex + 1
+                    ? "opacity-0"
+                    : ""
+                }
+                    ${
+                      isTurnBack && currentIndex ===4 && step.step ===0
+                        ? "opacity-0"
+                        : ""
+                    }
+                `}
             >
               {step.img}{" "}
               <div
@@ -284,7 +311,7 @@ export default function Description() {
               >
                 {step.icon}{" "}
                 <p className="text-[.7rem]">
-                  {step.description.slice(0, 24)} ...
+                  {step.description.slice(0, 20)} ...
                 </p>{" "}
                 <p className="font-bold text-2xl">{step.label}</p>
               </div>
@@ -365,9 +392,43 @@ export default function Description() {
             );
           })}
       </div>
+      <div
+        ref={animationImgTurnBack}
+        className={`${
+          isTurnBack ? "z-20 animation-img-turn-back " : "-z-50"
+        }  w-screen rounded-none  h-screen  absolute  right-0 bottom-0`}
+      >
+        {steps
+          .filter((step) =>
+            currentIndex === 4
+              ? step.step === 0
+              : step.step === currentIndex + 1
+          )
+          .map((step) => {
+            return (
+              <div
+                key={step.step}
+                className="w-full h-full overflow-hidden rounded-xl  "
+              >
+                {step.img}{" "}
+                <div
+                  className={`animation-text-opacity opacity-0 absolute bottom-0 z-30 w-full p-3 flex flex-col items-start gap-y-2 ${
+                    step.them === "dark" ? "text-white" : "text-white"
+                  }`}
+                >
+                  {step.icon}{" "}
+                  <p className="text-[.7rem]">
+                    {step.description.slice(0, 20)} ...
+                  </p>{" "}
+                  <p className="font-bold text-2xl">{step.label}</p>
+                </div>
+              </div>
+            );
+          })}
+      </div>
       {swiperInstance && (
         <>
-          <div className="z-30 absolute  right-[1%] lg:right-1 top-8 lg:top-20 lg:flex-row flex flex-col items-start text-secondary-50 ">
+          <div className="z-40 absolute  right-[1%] lg:right-1 top-8 lg:top-20 lg:flex-row flex flex-col items-start text-secondary-50 ">
             <div>
               {steps.map(({ step, icon }) => (
                 <div
@@ -392,7 +453,7 @@ export default function Description() {
               {toPersianNumbers(`0${currentIndex + 1}`)}
             </span>
           </div>
-          <div className="z-30 absolute  bottom-[12%] right-[50%] mr-4 flex items-center justify-center gap-x-3 text-secondary-50">
+          <div className="z-40 absolute  bottom-[12%] right-[50%] mr-4 flex items-center justify-center gap-x-3 text-secondary-50">
             <button
               className="  hover:animate-pulse overflow-hidden"
               onClick={() => {
@@ -404,7 +465,7 @@ export default function Description() {
             <button
               className="  hover:animate-pulse overflow-hidden"
               onClick={() => {
-                swiperInstance?.slidePrev(300);
+                swiperInstance?.slidePrev(600);
               }}
             >
               <ArrowLeft width={50} height={50} />
