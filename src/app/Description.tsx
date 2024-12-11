@@ -72,6 +72,7 @@ export default function Description() {
     >
       <ProgressBar progressBar={progressBar} />
       <SwiperCustom
+        firstLoad={firstLoad}
         setSwiperInstance={setSwiperInstance}
         setIsTurnBack={setIsTurnBack}
         setCurrentIndex={setCurrentIndex}
@@ -91,12 +92,14 @@ export default function Description() {
       ) : (
         <PreSlide currentIndex={currentIndex} />
       )}
+      {!firstLoad && (
+        <TurnBackSlide
+          isTurnBack={isTurnBack}
+          currentIndex={currentIndex}
+          animationImgTurnBack={animationImgTurnBack}
+        />
+      )}
 
-      <TurnBackSlide
-        isTurnBack={isTurnBack}
-        currentIndex={currentIndex}
-        animationImgTurnBack={animationImgTurnBack}
-      />
       {swiperInstance && (
         <>
           <Status currentIndex={currentIndex} />
@@ -131,9 +134,11 @@ interface SwiperCustomType {
   handleAnimationImgTurnBack: () => void;
   currentIndex: number;
   isTurnBack: boolean;
+  firstLoad: boolean;
 }
 
 function SwiperCustom({
+  firstLoad,
   setSwiperInstance,
   setCurrentIndex,
   handlePrgressBar,
@@ -181,7 +186,9 @@ function SwiperCustom({
       modules={[Autoplay]}
       spaceBetween={20}
       onClick={(swiper) => swiper.slideNext()}
-      className={` w-40 sm:w-96 lg:w-[35rem] h-52 rounded-xl bottom-[11.5%] right-0 swiper-custom cursor-pointer `}
+      className={` w-40 sm:w-96 lg:w-[35rem] h-52 rounded-xl bottom-[11.5%] right-0 swiper-custom cursor-pointer transition-all duration-1000 ${
+        firstLoad ? "translate-x-[100%]" : "translate-x-0"
+      } `}
     >
       {swiperSlides.map((step) => {
         return (
