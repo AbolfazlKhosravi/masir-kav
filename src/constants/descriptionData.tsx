@@ -125,7 +125,7 @@ export const steps = [
     icon: <Home width={25} height={25} />,
     linkSrc: "/login",
     linkLabel: "به ما بپیوندید .🥳",
-    them: "dark",
+    them: "light",
     images: [person1, person2, person3, person4, person5],
     text: "با بیش از 10 هزار عضو",
   },
