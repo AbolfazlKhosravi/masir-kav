@@ -3,7 +3,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper";
 import { Autoplay } from "swiper/modules";
-import homeImg from "../../public/homeImg.jpg";
+import homeImg from "../../../public/homeImg.jpg";
 
 // Import Swiper styles
 import "swiper/css";

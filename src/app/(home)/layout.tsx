@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "../styles/globals.css";
+import "../../styles/globals.css";
 import vazirFont from "@/constants/localFont";
 import DarkModeProvider from "@/context/changeThem/DarkModeContext";
 import HomeHeader from "@/components/header/HomeHeader";
